@@ -26,6 +26,8 @@ SECRET_KEY = "s6&qh=0i(&v8_%)5)_ca(w5q8pfsn&j^(ry6rkfkwo5+&wdqk1"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SITE_URL = "http://localhost:8000"
+
 # Application definition
 
 INSTALLED_APPS = [

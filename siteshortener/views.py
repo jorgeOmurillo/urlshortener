@@ -12,6 +12,8 @@ from django.conf import settings
 # from django.core.context_processors import csrf
 from django.views.decorators import csrf
 from django.views.decorators.csrf import csrf_protect
+from django.conf import settings
+import socket
  
 def index(request):
     c = {}
@@ -33,7 +35,7 @@ def shorten_url(request):
  
         response_data = {}
         # response_data['url'] = settings.SITE_URL + "/" + short_id
-        response_data['url'] = short_id
+        response_data['url'] = "http://" + request.get_host() +  "/" + short_id
         return HttpResponse(json.dumps(response_data),  content_type="application/json")
     return HttpResponse(json.dumps({"error": "error occurs"}), content_type="application/json")
  
