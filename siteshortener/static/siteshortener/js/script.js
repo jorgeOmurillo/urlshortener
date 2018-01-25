@@ -15,7 +15,7 @@ $(function() {
 
 function returnSuccess(data, textStatus, jqXHR) {
     if(data.url) {
-        $('#url-result').html('<a href="' + data.url + '">' + data.url + '</a> <button class="btn btn-default" type="button" id="copy-button" data-toggle="tooltip" data-placement="button" title="Copiar">Copiar</button>');
+        $('#url-result').html('<a id="myLink" href="' + data.url + '">' + data.url + '</a> <button class="btn btn-default" type="button" id="copy-button" data-toggle="tooltip" data-placement="button" title="Copiar">Copiar</button>');
         $('#url').val("");
     } else {
         $('#url-result').text("No ingresaste un URL."); 
@@ -25,13 +25,14 @@ function returnSuccess(data, textStatus, jqXHR) {
 
 $(document).ready(function() {
 	//Initialize the tooltip.
-		$('#copy-button').tooltip();
-
-	// When the copy button is clicked, select the value of the text box, attempt
+	$('#copy-button').tooltip();
+	
+	// When the copy button is clicked, select the value of the hyperlink, attempt
 	// to execute the copy command, and trigger event to update tooltip message
 	// to indicate whether the text was successfully copied.
 	$('#copy-button').bind('click', function() {
-		var input = document.querySelector('#copy-input');
+		var input = document.querySelector('#myLink');
+console.log("created input variable");
 		input.setSelectionRange(0, input.value.length + 1);
 		try {
 			var success = document.execCommand('copy');
